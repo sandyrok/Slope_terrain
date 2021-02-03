@@ -1,4 +1,4 @@
-from spinup import ppo_tf1 as ppo
+import ppo
 import tensorflow as tf
 import gym
 
@@ -25,6 +25,15 @@ import random
 #Registering new environments
 from gym.envs.registration import registry, register, make, spec
 
+
+#Rendering
+
+import matplotlib.pyplot as plt
+#from IPython import display as ipythondisplay
+
+
+
+
 #Stoch 2 Test imports
 import pybullet as p 
 import numpy as np
@@ -34,12 +43,12 @@ import math
 PI = math.pi
 
 
-register(id='Stoch2-v0',entry_point='gym_sloped_terrain.envs.stoch2_pybullet_env:Stoch2Env', kwargs = {'gait' : 'trot', 'render': True, 'action_dim': 20, 'stairs': 0} )
+register(id='Stoch2-v0',entry_point='gym_sloped_terrain.envs.stoch2_pybullet_env:Stoch2Env', kwargs = {'gait' : 'trot', 'render': False, 'action_dim': 20, 'stairs': 0} )
 
 env_fn = lambda : gym.make('Stoch2-v0')
 
-ac_kwargs = dict(hidden_sizes=[64,64], activation=tf.nn.relu)
+ac_kwargs = dict(hidden_sizes=[20], activation=None)
 
 logger_kwargs = dict(output_dir='path/to/output_dir', exp_name='experiment_name')
 
-ppo(env_fn=env_fn, ac_kwargs=ac_kwargs, steps_per_epoch=5000, epochs= 60, logger_kwargs=logger_kwargs)
+ppo.ppo(env_fn=env_fn, ac_kwargs=ac_kwargs, steps_per_epoch=6000, epochs=  200, logger_kwargs=logger_kwargs)
