@@ -196,6 +196,7 @@ def trpo(env_fn, actor_critic=core.mlp_actor_critic, ac_kwargs=dict(), seed=0,
             almost the same.
 
     """
+    tf.reset_default_graph()
 
     logger = EpochLogger(**logger_kwargs)
     logger.save_config(locals())
@@ -208,9 +209,6 @@ def trpo(env_fn, actor_critic=core.mlp_actor_critic, ac_kwargs=dict(), seed=0,
     obs_dim = env.observation_space.shape
     
     act_dim = env.action_space.shape
-    f.write(f'{obs_dim}\n')
-    f.write(f'{act_dim}\n')
-    sys.exit()	
     
     # Share information about action space with policy architecture
     ac_kwargs['action_space'] = env.action_space
@@ -355,6 +353,8 @@ def trpo(env_fn, actor_critic=core.mlp_actor_critic, ac_kwargs=dict(), seed=0,
                 # if trajectory didn't reach terminal state, bootstrap value target
                 last_val = 0 if d else sess.run(v, feed_dict={x_ph: o.reshape(1,-1)})
                 buf.finish_path(last_val)
+                f.write('{}\n'.format( ep_ret))
+                print(ep_ret)
                 if terminal:
                     # only save EpRet / EpLen if trajectory finished
                     logger.store(EpRet=ep_ret, EpLen=ep_len)

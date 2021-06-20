@@ -1,0 +1,42 @@
+{
+    "ac_kwargs":	{
+        "hidden_sizes":	[
+            200
+        ]
+    },
+    "act_noise":	0.1,
+    "actor_critic":	"mlp_actor_critic",
+    "batch_size":	100,
+    "env_fn":	"<function <lambda> at 0x7f9f14a7e8c0>",
+    "epochs":	50,
+    "exp_name":	"experiment_name",
+    "gamma":	0.99,
+    "logger":	{
+        "<utils1.logx.EpochLogger object at 0x7f9edd75a090>":	{
+            "epoch_dict":	{},
+            "exp_name":	"experiment_name",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"path/to/output_dir",
+            "output_file":	{
+                "<_io.TextIOWrapper name='path/to/output_dir/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"experiment_name",
+        "output_dir":	"path/to/output_dir"
+    },
+    "max_ep_len":	1000,
+    "pi_lr":	0.001,
+    "polyak":	0.995,
+    "q_lr":	0.001,
+    "replay_size":	1000000,
+    "save_freq":	1,
+    "seed":	0,
+    "start_steps":	10000,
+    "steps_per_epoch":	5000
+}

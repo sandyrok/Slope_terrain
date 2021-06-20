@@ -1,8 +1,8 @@
 {
     "ac_kwargs":	{
         "hidden_sizes":	[
-            64,
-            64
+            60,
+            60
         ]
     },
     "actor_critic":	"mlp_actor_critic",
@@ -12,13 +12,13 @@
     "cg_iters":	10,
     "damping_coeff":	0.1,
     "delta":	0.01,
-    "env_fn":	"<function <lambda> at 0x7fc4079c28c0>",
+    "env_fn":	"<function <lambda> at 0x7ff2f48e68c0>",
     "epochs":	50,
     "exp_name":	"experiment_name",
     "gamma":	0.99,
     "lam":	0.97,
     "logger":	{
-        "<utils1.logx.EpochLogger object at 0x7fc3c95d7690>":	{
+        "<utils1.logx.EpochLogger object at 0x7ff2b64b03d0>":	{
             "epoch_dict":	{},
             "exp_name":	"experiment_name",
             "first_row":	true,
@@ -39,7 +39,7 @@
     "max_ep_len":	1000,
     "save_freq":	10,
     "seed":	0,
-    "steps_per_epoch":	4000,
+    "steps_per_epoch":	5000,
     "train_v_iters":	80,
     "vf_lr":	0.001
 }

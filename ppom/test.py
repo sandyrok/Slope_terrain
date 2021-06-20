@@ -43,11 +43,11 @@ import math
 PI = math.pi
 
 
-register(id='Stoch2-v0',entry_point='gym_sloped_terrain.envs.stoch2_pybullet_env:Stoch2Env', kwargs = {'gait' : 'trot', 'render': False, 'action_dim': 20, 'stairs': 0} )
+register(id='Stoch2-v0',entry_point='gym_sloped_terrain.envs.stoch2_pybullet_env:Stoch2Env', kwargs = {'gait' : 'trot', 'render': False, 'action_dim': 20, 'stairs': 0, 'end_steps' : 250} )
 
 env_fn = lambda : gym.make('Stoch2-v0')
 
-hidden = [[40,40]]
+hidden = [[20,20]]
 for x in hidden:
 
 	ac_kwargs = dict(hidden_sizes=x, activation=tf.nn.relu)

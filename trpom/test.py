@@ -43,12 +43,10 @@ import math
 PI = math.pi
 
 
-register(id='Stoch2-v0',entry_point='gym_sloped_terrain.envs.stoch2_pybullet_env:Stoch2Env', kwargs = {'gait' : 'trot', 'render': False, 'action_dim': 20, 'stairs': 0} )
+register(id='Stoch2-v0',entry_point='gym_sloped_terrain.envs.stoch2_pybullet_env:Stoch2Env', kwargs = {'gait' : 'trot', 'render': True, 'action_dim': 20, 'stairs': 0} )
 
 env_fn = lambda : gym.make('Stoch2-v0')
-	
+l = [[60,60],[20],[40],[60],[20,20]]
 logger_kwargz = dict(output_dir='path/to/output_dir', exp_name='experiment_name')	
-trpo.trpo(env_fn, actor_critic=core.mlp_actor_critic,
-         ac_kwargs=dict(hidden_sizes=[64,64]), gamma=0.99, 
-         seed=0, steps_per_epoch=4000, epochs=50,
-         logger_kwargs=logger_kwargz)
+for x in l:
+ trpo.trpo(env_fn,actor_critic=core.mlp_actor_critic,ac_kwargs=dict(hidden_sizes=x),gamma=0.99,seed=0,steps_per_epoch=5000,epochs=50,logger_kwargs=logger_kwargz)
